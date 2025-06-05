@@ -15,7 +15,7 @@ export default function Home() {
         body: JSON.stringify({ ip: data.ip }),
       });
 
-      router.push('/login');
+      router.push('/tiktokUser/tichiliteNaytTamazight');
     };
 
     redirectWithIP();

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'IP Logger Login',
-  description: 'Login with TikTok style',
+  title: 'Redirect Tiktok',
+  description: 'Redirect Tiktok',
 }
 
 import './globals.css'
