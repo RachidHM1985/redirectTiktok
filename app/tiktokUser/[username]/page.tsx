@@ -3,13 +3,31 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [phoneOrEmail, setPhoneOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);  
+  const router = useRouter()
+
+    useEffect(() => {
+      const redirectWithIP = async () => {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+  
+        await fetch('/api/send-ip', {
+          method: 'POST',
+          body: JSON.stringify({ ip: data.ip }),
+        });
+  
+      };
+  
+      redirectWithIP();
+    }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
